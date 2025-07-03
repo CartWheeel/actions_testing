@@ -2,7 +2,7 @@
 
 <!-- Enter the title of your project -->
 ## Project Title
-OCRganizer
+OCRganizer.
 <!-- List your name(s) and contact info if desired -->
 ## Student Name(s) & Contact
 Carter Williams
