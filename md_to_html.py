@@ -1,52 +1,41 @@
 import os
 import re
 
+# Paths
 TEMPLATE_PATH = 'html_template.html'
-OUTPUT_DIR = 'html'
 MD_DIR = 'submissions'
+HTML_DIR = 'html'
 
+# Fields and regex patterns
 fields = {
-    'Project_Title': r'## Project Title\n(.*)',
-    'Student_Names': r'## Student Name\(s\).*?\n(.*)',
-    'Adviser': r'## Adviser/Supervisor.*?\n(.*)',
-    'Course': r'## Course or Department.*?\n(.*)',
-    'Duration': r'## Project Duration.*?\n(.*)',
-    'Project_Overview': r'## Project Overview.*?\n(.*)',
-    'Problem_Statement': r'## Problem Statement / Motivation.*?\n(.*)',
-    'Goals': r'## Goals/Objectives.*?\n(.*)',
-    'Features': r'## Key Features / Functionality.*?\n(.*)',
-    'Technologies': r'## Technologies Used.*?\n(.*)',
-    'Challenges': r'## Major Challenges & Solutions.*?\n(.*)',
-    'Results': r'## Results / Outcomes.*?\n(.*)',
-    'Screenshots': r'## Screenshots / Demo Links.*?\n(.*)',
-    'Future_Work': r'## Future Work / Improvements.*?\n(.*)',
-    'Lessons': r'## Lessons Learned / Reflections.*?\n(.*)',
-    'Acknowledgments': r'## Acknowledgments.*?\n(.*)',
-    'How_To_Run': r'## How to Run / Use the Project.*?\n(.*)',
-    'Links': r'## Relevant Links.*?\n(.*)',
+    'Project_Title': r'## Project Title\s*\n(.*)',
+    'Student_Names': r'## Student Name\(s\)\s*\n(.*)',
+    'Project_Overview': r'## Project Overview\s*\n(.*)',
+    'Technologies_Used': r'## Technologies Used\s*\n(.*)',
+    'Results_Outcomes': r'## Results / Outcomes\s*\n(.*)',
 }
 
+# Helper to extract content for each field
 def extract_field(md, pattern):
-    match = re.search(pattern, md, re.DOTALL)
-    if not match:
-        return ""
-    val = match.group(1).strip()
-    # Support bulleted lists: keep only until next heading
-    val = re.split(r'\n## ', val)[0].strip()
-    return val
+    match = re.search(pattern, md)
+    if match:
+        return match.group(1).strip()
+    return ""
 
-with open(TEMPLATE_PATH) as f:
+# Load HTML template
+with open(TEMPLATE_PATH, encoding='utf-8') as f:
     template = f.read()
 
-os.makedirs(OUTPUT_DIR, exist_ok=True)
+os.makedirs(HTML_DIR, exist_ok=True)
 
+# Process each markdown file in submissions/
 for filename in os.listdir(MD_DIR):
     if filename.endswith('.md'):
-        with open(os.path.join(MD_DIR, filename)) as f:
+        with open(os.path.join(MD_DIR, filename), encoding='utf-8') as f:
             md = f.read()
         html = template
         for key, pattern in fields.items():
             html = html.replace('{' + key + '}', extract_field(md, pattern))
-        out_name = os.path.splitext(filename)[0] + '.html'
-        with open(os.path.join(OUTPUT_DIR, out_name), 'w') as out:
+        output_file = os.path.splitext(filename)[0] + '.html'
+        with open(os.path.join(HTML_DIR, output_file), 'w', encoding='utf-8') as out:
             out.write(html)
