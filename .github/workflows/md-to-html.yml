@@ -1,4 +1,4 @@
-name: Convert pushed markdown to HTML
+name: CONVERT MARKDOWN -> HTML
 
 on:
   push:
