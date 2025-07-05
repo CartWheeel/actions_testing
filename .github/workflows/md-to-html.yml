@@ -20,7 +20,7 @@ jobs:
       - name: Run python script to convert markdown template to HTML template
         run: |
           pip install gitpython
-          python3 md_to_html_only_changed.py
+          python3 md_to_html.py
 
       - name: Commit and push updated/new HTML files
         run: |
