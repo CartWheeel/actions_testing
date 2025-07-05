@@ -1,5 +1,5 @@
 ## Project Title
-Final Testing for the Test
+Final Testing for the Testing
 
 ## Student Name(s)
 Carter Williams the Great Actioner
