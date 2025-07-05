@@ -1,8 +1,8 @@
 ## Project Title
-Test Project
+Test Project - Testing Again
 
 ## Student Name(s)
-Jane Doe
+Carter Williams
 
 ## Project Overview
 This project demonstrates automated markdown-to-HTML conversion with GitHub Actions.
@@ -11,4 +11,4 @@ This project demonstrates automated markdown-to-HTML conversion with GitHub Acti
 Python, GitHub Actions
 
 ## Results / Outcomes
-HTML was generated automatically.
+HTML was generated automatically and information was updated correctly.
