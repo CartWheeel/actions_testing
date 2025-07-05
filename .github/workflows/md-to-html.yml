@@ -1,4 +1,4 @@
-name: Markdown to HTML
+name: Markdown to HTML (Only Changed Files)
 
 on:
   push:
@@ -17,15 +17,17 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Convert Markdown to HTML
-        run: python3 md_to_html.py
+      - name: Convert Only Changed Markdown to HTML
+        run: |
+          pip install gitpython
+          python3 md_to_html_only_changed.py
 
       - name: Commit and push HTML files
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add html/
-          git commit -m "Auto-generate HTML from markdown files"
+          git commit -m "Auto-generate HTML from changed markdown files"
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
