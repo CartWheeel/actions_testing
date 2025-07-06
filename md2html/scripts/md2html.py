@@ -2,9 +2,9 @@ import os
 import re
 import subprocess
 
-TEMPLATE_PATH = 'html_template.html'
-MD_DIR = 'submissions'
-HTML_DIR = 'html'
+TEMPLATE_PATH = 'md2html/templates/profile_page_template.html'
+MD_DIR = 'md2html/profiles_md'
+HTML_DIR = 'md2html/profiles_html_page'
 
 fields = {
     'Project_Title': r'## Project Title\s*\n(.*)',
@@ -28,7 +28,7 @@ def get_changed_files():
         return []
     latest, previous = commits[0], commits[1]
     diff_output = subprocess.check_output(['git', 'diff', '--name-only', previous, latest]).decode().splitlines()
-    # Only keep .md files in submissions/
+    # Only keep .md files in profiles_md/
     return [f for f in diff_output if f.startswith(f"{MD_DIR}/") and f.endswith(".md")]
 
 with open(TEMPLATE_PATH, encoding='utf-8') as f:

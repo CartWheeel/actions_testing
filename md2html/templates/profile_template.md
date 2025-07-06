@@ -1,11 +1,14 @@
 ## Project Title
-Test Project - Testing Again and Again
+Test Project - Testing 
 
 ## Student Name(s)
-Carter Williams
+John Doe
 
 ## Project Overview
 This project demonstrates automated markdown-to-HTML conversion with GitHub Actions.
 
 ## Technologies Used
-Python, GitHub Actions removed below vvvv what happens? removed a whole section 
+Python, GitHub Actions
+
+## Results / Outcomes
+HTML was generated automatically and information was updated correctly. 
