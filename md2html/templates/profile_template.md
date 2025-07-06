@@ -1,5 +1,5 @@
 ## Project Title
-Test Project - Testing 
+Test Project - markdown to html 
 
 ## Student Name(s)
 John Doe
