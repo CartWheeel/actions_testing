@@ -2,7 +2,7 @@
 Test Project - Testing
 
 ## Student Name(s)
-Carter Williams
+Carter H. Williams
 
 ## Project Overview
 This project demonstrates automated markdown-to-HTML conversion with GitHub Actions.

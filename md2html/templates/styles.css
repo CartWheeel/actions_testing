@@ -1,80 +1,73 @@
 body {
-  background: #f7fafd;
-  font-family: sans-serif;
+  background: linear-gradient(135deg, #e8f0fe 0%, #fdf6e3 100%);
+  font-family: 'Segoe UI', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  min-height: 100vh;
 }
 
-/* Container for both profile pages and cards */
 .profile-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 24px 18px 20px 18px;
-  width: 320px;
-  margin: 32px auto;
-  box-shadow: 1px 2px 10px #f2f2f2;
+  max-width: 550px;
+  margin: 48px auto;
   background: #fff;
-  transition: box-shadow 0.2s, transform 0.2s;
-  text-align: left;
-  max-width: 98vw;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(32, 48, 64, 0.08), 0 1.5px 5px 0 rgba(0,0,0,0.08);
+  padding: 48px 32px 36px 32px;
+  text-align: center;
+  position: relative;
 }
 
-/* Card-specific hover */
-.profile-card:hover {
-  box-shadow: 0 4px 18px #b3d1ff;
-  transform: translateY(-3px) scale(1.025);
-  cursor: pointer;
-}
-
-/* For full profile pages, use h1 */
 .profile-card h1 {
-  margin: 0 0 12px 0;
-  font-size: 1.6em;
-  color: #1976d2;
+  margin-top: 0;
+  font-size: 2.4em;
+  color: #2153d4;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+  font-weight: 700;
 }
 
-/* For cards, use h3 */
-.profile-card h3 {
-  margin: 0 0 10px 0;
+.student-names {
+  color: #444;
   font-size: 1.15em;
-  color: #1976d2;
+  margin-bottom: 18px;
 }
 
-/* Name and tech info, shared between card and page */
-.profile-card .student-names,
-.profile-card .technologies {
-  color: #555;
+.technologies {
+  color: #2153d4;
   font-size: 1em;
-  margin-bottom: 7px;
-}
-
-/* Overview/summary styling */
-.profile-card .overview {
-  font-size: 1.04em;
-  color: #333;
-  margin-bottom: 13px;
-  min-height: 40px;
-  line-height: 1.4;
-}
-
-/* Results section for full profile page */
-.profile-card .results {
-  color: #222;
-  font-size: 1em;
-  margin-top: 14px;
-  margin-bottom: 8px;
-}
-
-/* Link for "View Full" on cards */
-.profile-card .view-link {
+  background: #e9f2ff;
   display: inline-block;
-  color: #1976d2;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 1em;
-  margin-top: 8px;
+  padding: 4px 16px;
+  border-radius: 16px;
+  margin-bottom: 28px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
 }
 
-.profile-card .view-link:hover {
-  text-decoration: underline;
+.overview {
+  font-size: 1.15em;
+  color: #252a32;
+  margin-bottom: 32px;
+  line-height: 1.6;
+}
+
+.results {
+  background: #f2f7fd;
+  border-left: 5px solid #2153d4;
+  font-size: 1.07em;
+  color: #304050;
+  padding: 14px 18px;
+  border-radius: 8px;
+  display: inline-block;
+  margin: 0 auto;
+}
+
+@media (max-width: 650px) {
+  .profile-card {
+    max-width: 98vw;
+    padding: 32px 6vw 24px 6vw;
+  }
+  .profile-card h1 {
+    font-size: 1.5em;
+  }
 }
