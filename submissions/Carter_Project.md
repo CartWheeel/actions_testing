@@ -8,7 +8,7 @@ Carter Williams the Great Actioner
 This project demonstrates automated markdown-to-HTML conversion with GitHub Actions with greath skill.
 
 ## Technologies Used
-Python, GitHub Actions, your mom. 1
+Python, GitHub Actions, your mom. 1 2
 Trying again 2
 adjustment to mine own 3
 

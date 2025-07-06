@@ -8,4 +8,4 @@ Carter Williams
 This project demonstrates automated markdown-to-HTML conversion with GitHub Actions.
 
 ## Technologies Used
-Python, GitHub Actions removed below vvvv what happens? removed a whole section
+Python, GitHub Actions removed below vvvv what happens? removed a whole section 
