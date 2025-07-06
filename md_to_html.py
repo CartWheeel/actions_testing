@@ -39,6 +39,9 @@ os.makedirs(HTML_DIR, exist_ok=True)
 changed_files = get_changed_files()
 
 for file_path in changed_files:
+    if not os.path.exists(file_path):
+        print(f"File {file_path} does not exist. Skipping.")
+        continue
     filename = os.path.basename(file_path)
     with open(file_path, encoding='utf-8') as f:
         md = f.read()
