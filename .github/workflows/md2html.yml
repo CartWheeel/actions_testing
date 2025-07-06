@@ -18,7 +18,7 @@ jobs:
           fetch-depth: 0
 
       - name: Run python script to convert markdown template to HTML template
-        run: md2html/scripts/md2html.py
+        run: python3 md2html/scripts/md2html.py
 
       - name: Commit and push updated/new HTML files
         run: |
