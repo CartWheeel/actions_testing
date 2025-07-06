@@ -1,13 +1,11 @@
 import os
 import re
-from git import Repo
+import subprocess
 
-# Set paths
 TEMPLATE_PATH = 'html_template.html'
 MD_DIR = 'submissions'
 HTML_DIR = 'html'
 
-# Fields to extract from markdown
 fields = {
     'Project_Title': r'## Project Title\s*\n(.*)',
     'Student_Names': r'## Student Name\(s\)\s*\n(.*)',
@@ -22,15 +20,16 @@ def extract_field(md, pattern):
         return match.group(1).strip()
     return ""
 
+# Get list of changed files from the last commit (push/merge)
 def get_changed_files():
-    repo = Repo(os.getcwd())
-    # Get files changed in the last commit
-    changed = set()
-    for commit in repo.iter_commits('HEAD', max_count=1):
-        for file in commit.stats.files:
-            if file.startswith(f"{MD_DIR}/") and file.endswith(".md"):
-                changed.add(file)
-    return changed
+    # Get last two commit hashes
+    commits = subprocess.check_output(['git', 'rev-list', '--max-count=2', 'HEAD']).decode().split()
+    if len(commits) < 2:
+        return []
+    latest, previous = commits[0], commits[1]
+    diff_output = subprocess.check_output(['git', 'diff', '--name-only', previous, latest]).decode().splitlines()
+    # Only keep .md files in submissions/
+    return [f for f in diff_output if f.startswith(f"{MD_DIR}/") and f.endswith(".md")]
 
 with open(TEMPLATE_PATH, encoding='utf-8') as f:
     template = f.read()

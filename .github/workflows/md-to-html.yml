@@ -1,5 +1,4 @@
 name: Convert Markdown --> HTML
-
 on:
   push:
     branches:
@@ -14,13 +13,12 @@ jobs:
   convert-markdown:
     runs-on: ubuntu-latest
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Run python script to convert markdown template to HTML template
-        run: |
-          pip install gitpython
-          python3 md_to_html.py
+        run: python3 md_to_html.py
 
       - name: Commit and push updated/new HTML files
         run: |
