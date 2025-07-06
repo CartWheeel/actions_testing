@@ -1,5 +1,5 @@
 ## Project Title
-Test Project - Testing 
+Test Project - Testing
 
 ## Student Name(s)
 Carter Williams
