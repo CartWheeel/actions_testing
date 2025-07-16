@@ -15,20 +15,34 @@ jobs:
   convert-markdown:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: Run python script to convert markdown template to HTML template
-        run: python3 .github/scripts/md2html.py
+      - name: Print working directory and list markdown files
+        run: |
+          pwd
+          echo "Markdown files:"
+          ls -l docs/users/markdown || echo "No markdown files found"
+          echo "Profiles directory:"
+          mkdir -p docs/users/profiles
+          ls -l docs/users/profiles || echo "No profiles yet"
 
-      - name: Commit and create pull request with HTML output
+      - name: Run python script to convert markdown to HTML
+        run: |
+          echo "Running md2html.py..."
+          python3 .github/scripts/md2html.py
+          echo "Listing generated HTML:"
+          ls -l docs/users/profiles || echo "No HTML files generated"
+
+      - name: Create Pull Request with generated HTML
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          commit-message: "Auto-generated HTML page(s) from new markdown"
+          commit-message: "Auto-generated HTML page(s) from markdown"
           branch: auto/html-gen-${{ github.run_id }}
-          title: "Generate HTML from merged markdown files"
+          title: "Generate HTML from merged markdown"
           base: main
           add-paths: |
             docs/users/profiles/*.html
