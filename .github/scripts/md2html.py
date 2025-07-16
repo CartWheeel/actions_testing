@@ -2,9 +2,9 @@ import os
 import re
 import subprocess
 
-TEMPLATE_PATH = 'md2html/templates/profile_page_template.html'
-MD_DIR = 'md2html/profiles_md'
-HTML_DIR = 'md2html/profiles_html_page'
+TEMPLATE_PATH = 'docs/templates/profile_template.html'
+MD_DIR = 'docs/users/markdown'
+HTML_DIR = 'docs/users/profiles'
 
 fields = {
     'Project_Title': r'## Project Title\s*\n(.*)',
