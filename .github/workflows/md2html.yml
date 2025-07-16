@@ -20,23 +20,23 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Print working directory and list markdown files
+      - name: Show working directory and input files
         run: |
           pwd
           echo "Markdown files:"
           ls -l docs/users/markdown || echo "No markdown files found"
-          echo "Profiles directory:"
           mkdir -p docs/users/profiles
+          echo "Current profiles:"
           ls -l docs/users/profiles || echo "No profiles yet"
 
-      - name: Run python script to convert markdown to HTML
+      - name: Run markdown to HTML conversion
         run: |
           echo "Running md2html.py..."
           python3 .github/scripts/md2html.py
-          echo "Listing generated HTML:"
+          echo "Generated HTML files:"
           ls -l docs/users/profiles || echo "No HTML files generated"
 
-      - name: Create Pull Request with generated HTML
+      - name: Create Pull Request with HTML output
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,5 +44,5 @@ jobs:
           branch: auto/html-gen-${{ github.run_id }}
           title: "Generate HTML from merged markdown"
           base: main
-          add-paths: |
-            docs/users/profiles/*.html
+          add-paths: docs/users/profiles/*.html
+          commit-options: '--allow-empty'
