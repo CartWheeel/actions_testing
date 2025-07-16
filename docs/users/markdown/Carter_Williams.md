@@ -5,7 +5,7 @@ Test Project - Testing
 Carter H. Williams
 
 ## Project Overview
-This project demonstrates automated markdown-to-HTML conversion with GitHub Actions.
+This file aims to create an html page from a markdown file.
 
 ## Technologies Used
 Python, GitHub Actions
